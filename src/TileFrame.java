@@ -160,13 +160,6 @@ public class TileFrame extends JFrame
         txtDollar.setEditable(false);
         txtDollar.setText(String.format("%.2s", "5.00"));
         panelSouth.add(txtDollar);
-        
-        if(Double.parseDouble(txtDollar.getText()) < 0.01)
-        {
-        	btnMax.setEnabled(false);
-        	btnMid.setEnabled(false);
-        	btnMin.setEnabled(false);
-        }
 	
         btnMax.addActionListener(new ActionListener() { //Max is working
             public void actionPerformed(ActionEvent e) {
