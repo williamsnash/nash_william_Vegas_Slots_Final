@@ -29,12 +29,13 @@ public class TileFrame extends JFrame
 	private SlotsDrawing drawSlots;
 	private Random ran;
 	private ArrayList<Tile> tiles;
+	private JTextField txtDollar;
 	/**
 	 * setupMenu sets up the top bar
 	 * This allows users to save, load restart and exit the game
 	 * It also includes a help tab if the user gets suck
 	 */
-	public void setupMenu(JTextField txtDollar)
+	public void setupMenu(JButton max, JButton mid, JButton min)
 	{
 		Tile tileInfo = new Tile();
 		JMenuBar slotBar = new JMenuBar();
@@ -84,11 +85,10 @@ public class TileFrame extends JFrame
 		menuRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtDollar.setText(String.format("%s", "5"));
-				/**
-				 * Need to figure out what needs to be done for restart to work		
-				 */
-				drawSlots.tileDrawRan();
-				
+				max.setEnabled(true);
+            	mid.setEnabled(true);
+            	min.setEnabled(true);
+				drawSlots.tileDrawRan();	
 			}
 		});
 		JMenuItem menuExit = new JMenuItem("Exit");
@@ -156,9 +156,10 @@ public class TileFrame extends JFrame
         //Dollar button
         JLabel labBal = new JLabel("$");
         panelSouth.add(labBal);
-        JTextField txtDollar = new JTextField(6);
+        txtDollar = new JTextField(8);
         txtDollar.setEditable(false);
-        txtDollar.setText(String.format("%.2s", "5.00"));
+        double startvalue = 5.00;
+        txtDollar.setText(String.format("%.2f", startvalue));
         panelSouth.add(txtDollar);
 	
         btnMax.addActionListener(new ActionListener() { //Max is working
@@ -169,15 +170,15 @@ public class TileFrame extends JFrame
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
             	{
-            		System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Max");
+            		//System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Max");
             		Dollar = Dollar * 100;
-					txtDollar.setText(String.format("%d", Dollar));
+					txtDollar.setText(String.format("%.2f", Dollar));
             	}
             	else if(win.equalsIgnoreCase("Color"))
             	{
-            		System.out.println("You matched Color- Max");
+            		//System.out.println("You matched Color- Max");
             		Dollar = Dollar * 25;
-            		txtDollar.setText(String.format("%d", Dollar));
+            		txtDollar.setText(String.format("%.2f", Dollar));
             	}
             	else {
             		txtDollar.setText(String.format("%s", "0"));
@@ -199,15 +200,15 @@ public class TileFrame extends JFrame
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
             	{
-            		System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Mid");
+            		//System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Mid");
             		Dollar = Dollar * 50;
-					txtDollar.setText(String.format("%d", Dollar));
+					txtDollar.setText(String.format("%.2f", Dollar));
             	}
             	else if(win.equalsIgnoreCase("Color"))
             	{
-            		System.out.println("You matched Color- Mid");
+            		//System.out.println("You matched Color- Mid");
             		Dollar = Dollar * 10;
-					txtDollar.setText(String.format("%d", Dollar));
+					txtDollar.setText(String.format("%.2f", Dollar));
             	}
             	else {
             		txtDollar.setText(String.format("%.2f", Dollar));
@@ -230,13 +231,13 @@ public class TileFrame extends JFrame
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
             	{
-            		System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Min");
+            		//System.out.println("YOU MATCH BOTH COLOR AND SHAPE- Min");
             		Dollar = Dollar * 10;
 					txtDollar.setText(String.format("%.2f", Dollar));
             	}
             	else if(win.equalsIgnoreCase("Color"))
             	{
-            		System.out.println("You matched Color- Min");
+            		//System.out.println("You matched Color- Min");
             		Dollar = Dollar * 5;
 					txtDollar.setText(String.format("%.2f", Dollar));
             	}
@@ -253,7 +254,7 @@ public class TileFrame extends JFrame
             }
         });
         c.add(panelSouth,BorderLayout.SOUTH);
-        setupMenu(txtDollar);
+        setupMenu(btnMax, btnMid, btnMin);
 
 	}
 }

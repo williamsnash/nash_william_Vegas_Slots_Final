@@ -8,11 +8,14 @@ import java.util.ArrayList;
 public class TileChecker
 {
 	private ArrayList<Tile> tiles;
-	
+	/**
+	 * checkerTile is a function to check to see if the color of the tiles match
+	 * @param drawSlots is used to access the tiles already created
+	 * @return returns both( if both color and shape are match) or color(if only color is matched) and if none match is present the returns nothing
+	 */
 	public String checkerTile(SlotsDrawing drawSlots)
 	{
     	tiles = drawSlots.getTiles();
-    	int tileavg = 0;
     	ArrayList<Integer> tileColor = new ArrayList<Integer>();
     	ArrayList<Integer> tileShape = new ArrayList<Integer>();
     	for(Tile tile: tiles)
@@ -46,9 +49,14 @@ public class TileChecker
         	}
     	}
     	return "none";
-    	//All shapes and colors = x100
-    	//Just colors = x25
 	}
+	
+	/**
+	 * shapeCheck is used because I didnt like the look of the many stacked if statments, and it is used in the same way every time
+	 * Operates in the same way as the color checker
+	 * @param tileShape Created in the previous function and stores shape data
+	 * @return true if all the shaped match, and false if not
+	 */
 	public boolean shapeCheck(ArrayList<Integer> tileShape)
 	{
 		boolean win = false;
