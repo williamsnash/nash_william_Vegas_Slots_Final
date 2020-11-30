@@ -30,6 +30,7 @@ public class TileFrame extends JFrame
 	private Random ran;
 	private ArrayList<Tile> tiles;
 	private JTextField txtDollar;
+	private double startvalue = 5.00; // This allows me to quicly change the value of restart and program start
 	/**
 	 * setupMenu sets up the top bar
 	 * This allows users to save, load restart and exit the game
@@ -84,7 +85,7 @@ public class TileFrame extends JFrame
 		JMenuItem menuRestart = new JMenuItem("Restart");
 		menuRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtDollar.setText(String.format("%s", "5"));
+				txtDollar.setText(String.format("%.2f", startvalue));
 				max.setEnabled(true);
             	mid.setEnabled(true);
             	min.setEnabled(true);
@@ -106,7 +107,7 @@ public class TileFrame extends JFrame
 		JMenuItem helpAbout = new JMenuItem("About");
 		helpAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Slot Machine Program made by Will Nash\n https://github.com/williamsnash/nash_william_slot_machine");
+				JOptionPane.showMessageDialog(null, "Slot Machine Program made by Will Nash\n https://github.com/williamsnash/nash_william_Vegas_Slots_Final");
 			}
 		});
 		slotHelp.add(helpAbout);
@@ -158,7 +159,6 @@ public class TileFrame extends JFrame
         panelSouth.add(labBal);
         txtDollar = new JTextField(8);
         txtDollar.setEditable(false);
-        double startvalue = 5.00;
         txtDollar.setText(String.format("%.2f", startvalue));
         panelSouth.add(txtDollar);
 	
