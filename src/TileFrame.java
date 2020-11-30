@@ -21,7 +21,6 @@ import javax.swing.JTextField;
  * This is program set the frame up for the slot machine 
  * It include the top bar options and sets the look of the frame
  * @author William Nash
- *
  */
 @SuppressWarnings({ "unused", "serial" })
 public class TileFrame extends JFrame
