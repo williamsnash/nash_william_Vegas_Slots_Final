@@ -55,17 +55,7 @@ class SlotsDrawing extends JPanel implements MouseListener
 		}
 	}
 	
-	public void tileDrawRan()
-	{
-		Tile tile;
-		for(int i = 0; i < tiles.size(); i++)
-		{
-			tile = new Tile();
-			tile.setTileRandom(ran);
-			tiles.set(i, tile);
-		}
-		repaint();
-	}
+
 	
 	/**
 	 * Taken from Solution

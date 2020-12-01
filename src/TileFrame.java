@@ -26,6 +26,7 @@ import javax.swing.JTextField;
 public class TileFrame extends JFrame
 {
 	private SlotsDrawing drawSlots;
+	private TileRandomizer tileRan;
 	private Random ran;
 	private ArrayList<Tile> tiles;
 	private JTextField txtDollar;
@@ -37,6 +38,7 @@ public class TileFrame extends JFrame
 	 */
 	public void setupMenu(JButton max, JButton mid, JButton min)
 	{
+		tileRan = new TileRandomizer();
 		Tile tileInfo = new Tile();
 		JMenuBar slotBar = new JMenuBar();
 		JMenu slotMenu = new JMenu("File");
@@ -88,7 +90,8 @@ public class TileFrame extends JFrame
 				max.setEnabled(true);
             	mid.setEnabled(true);
             	min.setEnabled(true);
-				drawSlots.tileDrawRan();	
+				tileRan.tileDrawRan(drawSlots.getTiles());	
+				repaint();
 			}
 		});
 		JMenuItem menuExit = new JMenuItem("Exit");
@@ -164,7 +167,8 @@ public class TileFrame extends JFrame
         btnMax.addActionListener(new ActionListener() { //Max is working
             public void actionPerformed(ActionEvent e) {
             	double Dollar = Double.parseDouble(txtDollar.getText());
-            	drawSlots.tileDrawRan();
+            	tileRan.tileDrawRan(drawSlots.getTiles());
+            	repaint();
             	TileChecker check = new TileChecker();
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
@@ -194,7 +198,8 @@ public class TileFrame extends JFrame
         btnMid.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	double Dollar = Double.parseDouble(txtDollar.getText())/2;
-            	drawSlots.tileDrawRan();
+            	tileRan.tileDrawRan(drawSlots.getTiles());
+            	repaint();
             	TileChecker check = new TileChecker();
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
@@ -225,7 +230,8 @@ public class TileFrame extends JFrame
         btnMin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	double Dollar = Double.parseDouble(txtDollar.getText())*0.9;
-            	drawSlots.tileDrawRan();
+            	tileRan.tileDrawRan(drawSlots.getTiles());
+            	repaint();
             	TileChecker check = new TileChecker();
             	String win = check.checkerTile(drawSlots);
             	if(win.equalsIgnoreCase("Both"))
